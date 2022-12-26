@@ -40,7 +40,7 @@ Sub calculation()
                     openprice = ws.Cells(i, 20).Value
                     closeprice = ws.Cells(i, 21).Value
                     yearly = closeprice - openprice
-                    percent = (openprice - closeprice) / openprice
+                    percent = yearly / openprice
                     ws.Range("V" & calculation_table_row).Value = yearly
                     ws.Range("W" & calculation_table_row).Value = percent
                     calculation_table_row = calculation_table_row + 1
@@ -121,6 +121,7 @@ Sub bonusmax()
         ws.Range("o1").Value = "Value"
             Dim max As Double
             Dim ticker As String
+                max = 0
                 For i = 2 To lastrow
                     If ws.Cells(i, 11).Value > max Then
                         max = ws.Cells(i, 11).Value
@@ -137,7 +138,8 @@ Sub bonusmin()
     For Each ws In Worksheets
         Dim min As Double
         Dim ticker As String
-            lastrow = ws.Cells(Rows.Count, 9).End(xlUp).Row
+        lastrow = ws.Cells(Rows.Count, 9).End(xlUp).Row
+        min = 0
                 For i = 2 To lastrow
                     If ws.Cells(i, 11).Value < min Then
                         min = ws.Cells(i, 11).Value
@@ -153,7 +155,8 @@ Sub bonusmaxtotal()
     For Each ws In Worksheets
         Dim maxV As Double
         Dim ticker As String
-            lastrow = ws.Cells(Rows.Count, 9).End(xlUp).Row
+        lastrow = ws.Cells(Rows.Count, 9).End(xlUp).Row
+            maxV = 0
                 For i = 2 To lastrow
                     If ws.Cells(i, 12).Value > maxV Then
                         maxV = ws.Cells(i, 12).Value
